@@ -14,7 +14,11 @@ class Chapter(models.Model):
     url = models.CharField(max_length=225)
     comic = models.CharField(max_length=64)
     read = models.BooleanField(default=False)
+    source = models.ForeignKey()
 
 
 class Source(models.Model):
     comic = models.CharField(max_length=64)
+    url = models.CharField(max_length=225)
+    active = models.BooleanField(default=True)
+    select = models.CharField(max_length=24)
