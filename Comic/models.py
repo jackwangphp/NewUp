@@ -12,13 +12,13 @@ class Chapter(models.Model):
     name = models.CharField(max_length=64)
     create_date = models.DateField(auto_now_add=True)
     url = models.CharField(max_length=225)
-    comic = models.CharField(max_length=64)
+    source = models.CharField(max_length=64)
     read = models.BooleanField(default=False)
-    source = models.ForeignKey()
+    comic = models.ForeignKey('Comic', on_delete=models.CASCADE, related_name='chapters')
 
 
 class Source(models.Model):
-    comic = models.CharField(max_length=64)
+    comic = models.ForeignKey('Comic', on_delete=models.CASCADE, related_name='chapters')
     url = models.CharField(max_length=225)
     active = models.BooleanField(default=True)
     select = models.CharField(max_length=24)
